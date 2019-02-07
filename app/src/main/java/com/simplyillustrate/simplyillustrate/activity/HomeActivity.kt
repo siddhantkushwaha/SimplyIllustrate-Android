@@ -22,7 +22,7 @@ class HomeActivity : AppCompatActivity() {
         RestAPI.requestWriteUser(user)
     }
 
-//    TODO - don't delete because this peice of code is often required
+//    TODO - don't delete because this piece of code is often required
 //    object : Callback<JsonObject> {
 //
 //        override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
