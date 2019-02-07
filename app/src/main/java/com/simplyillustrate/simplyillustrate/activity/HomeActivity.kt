@@ -1,10 +1,12 @@
-package com.simplyillustrate.simplyillustrate
+package com.simplyillustrate.simplyillustrate.activity
 
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.gson.JsonObject
+import com.simplyillustrate.simplyillustrate.R
+import com.simplyillustrate.simplyillustrate.api.RestAPI
 import com.simplyillustrate.simplyillustrate.pojo.User
 import retrofit2.Call
 import retrofit2.Callback

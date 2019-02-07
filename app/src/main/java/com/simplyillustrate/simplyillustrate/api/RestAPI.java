@@ -1,4 +1,4 @@
-package com.simplyillustrate.simplyillustrate;
+package com.simplyillustrate.simplyillustrate.api;
 
 import androidx.annotation.NonNull;
 import com.google.gson.Gson;

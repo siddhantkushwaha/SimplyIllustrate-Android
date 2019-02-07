@@ -1,9 +1,8 @@
-package com.simplyillustrate.simplyillustrate
+package com.simplyillustrate.simplyillustrate.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.google.firebase.auth.FirebaseAuth
-
+import com.simplyillustrate.simplyillustrate.R
 
 
 class MainActivity : AppCompatActivity() {
