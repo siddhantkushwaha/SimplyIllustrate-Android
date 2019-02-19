@@ -28,6 +28,10 @@
         <activity
             android:name=".activity.ProfileActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="ce5a69de9b6dadced694463f5f264443ccafb05f" />
     </application>
 
 </manifest>
