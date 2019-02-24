@@ -11,4 +11,8 @@
     <string name="logout">Logout</string>
     <string name="open_drawer">Open Navigation Drawer</string>
     <string name="close_drawer">Close Navigation Drawer</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="submit_text">Submit</string>
+    <string name="create_account">No account yet? Create one</string>
 </resources>
