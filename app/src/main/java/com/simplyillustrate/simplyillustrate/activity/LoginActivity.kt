@@ -52,7 +52,7 @@ class LoginActivity : AppCompatActivity() {
 
             true -> {
                 submit.text = "Login"
-                toggleLayout.text = "Create an Account"
+                toggleLayout.text = "No account yet? Create one"
             }
 
             false -> {
