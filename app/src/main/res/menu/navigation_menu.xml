@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/questions_id"
+            android:icon="@drawable/ic_questions"
+            android:title="@string/questions" />
+
+        <item
+            android:id="@+id/posts_id"
+            android:icon="@drawable/ic_posts"
+            android:title="@string/posts" />
+
+        <item
+            android:id="@+id/learning_id"
+            android:icon="@drawable/ic_learning"
+            android:title="@string/learning" />
+
+    </group>
+
+    <item android:title="@string/subheader">
+
+        <menu>
+
+            <item
+                android:id="@+id/profile_id"
+                android:icon="@drawable/ic_profile"
+                android:title="@string/profile" />
+
+            <item
+                android:id="@+id/settings_id"
+                android:icon="@drawable/ic_settings"
+                android:title="@string/settings" />
+
+            <item
+                android:id="@+id/logout_id"
+                android:icon="@drawable/ic_logout"
+                android:title="@string/logout" />
+
+        </menu>
+    </item>
+</menu>

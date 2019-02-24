@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Simply Illustrate</string>
+    <string name="examples_user">Examples User</string>
+    <string name="simply_illustrate_user_gmail_com">simply_illustrate_user@gmail.com</string>
+    <string name="questions">Questions</string>
+    <string name="posts">Posts</string>
+    <string name="learning">Learning</string>
+    <string name="subheader">User Settings</string>
+    <string name="profile">Profile</string>
+    <string name="settings">Settings</string>
+    <string name="logout">Logout</string>
+    <string name="open_drawer">Open Navigation Drawer</string>
+    <string name="close_drawer">Close Navigation Drawer</string>
 </resources>

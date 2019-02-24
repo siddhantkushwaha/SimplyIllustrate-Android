@@ -1,8 +1,8 @@
 package com.simplyillustrate.simplyillustrate.activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.simplyillustrate.simplyillustrate.R
 import kotlinx.android.synthetic.main.activity_login.*
