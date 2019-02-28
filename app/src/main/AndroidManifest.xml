@@ -15,7 +15,8 @@
         android:theme="@style/Theme.SimplyIllustrate"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-
+        <activity android:name=".activity.PracticeQuestionDetails"></activity>
+        <activity android:name=".activity.PostQuestionActivity"></activity>
         <activity android:name=".activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

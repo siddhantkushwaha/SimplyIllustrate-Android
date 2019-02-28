@@ -55,7 +55,7 @@ class HomeActivity : AppCompatActivity() {
             R.id.learning_id -> {
                 Toast.makeText(this, "Learning id clicked", Toast.LENGTH_SHORT).show();
                 isAtHome = false
-                LearningFragment.getNewInstance()
+                LearningFragment()
             }
             else -> {
                 QuestionsFragment.getNewInstance()

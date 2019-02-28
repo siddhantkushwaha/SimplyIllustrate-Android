@@ -15,4 +15,19 @@
     <string name="hint_password">Password</string>
     <string name="submit_text">Submit</string>
     <string name="create_account">No account yet? Create one</string>
+    <string name="title">Title</string>
+    <string name="category">Category</string>
+    <string name="difficulty">Difficulty</string>
+    <string name="description">Description</string>
+    <string name="submit">Submit</string>
+    <string name="text_in_recycler_view_list_item">Text in recycler view list item</string>
+    <string name="answer1">Answer1</string>
+    <string name="answer2">Answer2</string>
+    <string name="answer3">Answer3</string>
+    <string name="answer4">Answer4</string>
+    <string name="one">1.  </string>
+    <string name="two">2.  </string>
+    <string name="three">3.  </string>
+    <string name="four">4.  </string>
+    <string name="question">Q.  </string>
 </resources>
