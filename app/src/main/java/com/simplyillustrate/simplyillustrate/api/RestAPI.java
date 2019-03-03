@@ -48,13 +48,6 @@ public class RestAPI {
         Call<JsonObject> writeUser(@Body User user);
     }
 
-    public static Response<JsonObject> requestWriteUser(@NonNull User user) throws IOException {
-
-        WriteUserApi writeUserApi = retrofit.create(WriteUserApi.class);
-        Call<JsonObject> call = writeUserApi.writeUser(user);
-        return call.execute();
-    }
-
     public static void requestWriteUser(@NonNull User user, @NonNull Callback<JsonObject> callback) {
 
         WriteUserApi writeUserApi = retrofit.create(WriteUserApi.class);

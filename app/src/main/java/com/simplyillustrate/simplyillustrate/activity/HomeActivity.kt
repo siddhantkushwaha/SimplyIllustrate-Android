@@ -5,12 +5,19 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
+import com.google.firebase.auth.FirebaseAuth
+import com.google.gson.JsonObject
 import com.simplyillustrate.simplyillustrate.R
+import com.simplyillustrate.simplyillustrate.api.RestAPI
+import com.simplyillustrate.simplyillustrate.entity.User
 import com.simplyillustrate.simplyillustrate.fragments.LearningFragment
 import com.simplyillustrate.simplyillustrate.fragments.PostsFragment
 import com.simplyillustrate.simplyillustrate.fragments.QuestionsFragment
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.layout_navigation_drawer.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class HomeActivity : AppCompatActivity() {
 
@@ -38,6 +45,19 @@ class HomeActivity : AppCompatActivity() {
             drawer_layout.closeDrawer(GravityCompat.START)
             true
         }
+
+        val user = User()
+        user.firebaseId = FirebaseAuth.getInstance().uid
+        user.email = FirebaseAuth.getInstance().currentUser!!.email
+        RestAPI.requestWriteUser(user, object : Callback<JsonObject> {
+            override fun onFailure(call: Call<JsonObject>, t: Throwable) {
+
+            }
+
+            override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
+
+            }
+        });
     }
 
     private fun displayFragment(id: Int) {
