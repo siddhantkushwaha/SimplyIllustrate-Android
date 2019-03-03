@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.simplyillustrate.simplyillustrate.R
 import com.simplyillustrate.simplyillustrate.adapters.QuestionsAdapter
 import com.simplyillustrate.simplyillustrate.api.RestAPI
-import com.simplyillustrate.simplyillustrate.models.PracticeQuestion
+import com.simplyillustrate.simplyillustrate.entity.PracticeQuestion
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableObserver
 import kotlinx.android.synthetic.main.learning_fragment.view.*
@@ -21,22 +21,24 @@ import kotlin.collections.set
 
 class LearningFragment : Fragment() {
 
+    private lateinit var rootView: View
+
     private val practiceQuestions = ArrayList<PracticeQuestion>()
 
     private lateinit var compositeDisposable: CompositeDisposable
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        val rootView = inflater.inflate(R.layout.learning_fragment, container, false)
+        rootView = inflater.inflate(R.layout.learning_fragment, container, false)
 
-        initViews(rootView)
+        initViews()
 
-        getQuestions(rootView)
+        getQuestions()
 
         return rootView
     }
 
-    private fun getQuestions(rootView: View) {
+    private fun getQuestions() {
 
         val map = HashMap<String, String>()
         map["tags"] = "5c742bab10a0e463cc1460a3"
@@ -60,12 +62,12 @@ class LearningFragment : Fragment() {
             })
     }
 
-    private fun initViews(rootView: View) {
+    private fun initViews() {
 
         rootView.rv_questions.itemAnimator = DefaultItemAnimator()
         rootView.rv_questions.adapter =
             QuestionsAdapter(practiceQuestions,
-                QuestionsAdapter.ListItemClickListener { view, clickedItemIndex ->
+                QuestionsAdapter.ListItemClickListener { _, clickedItemIndex ->
                     Toast.makeText(
                         context,
                         "Position $clickedItemIndex",

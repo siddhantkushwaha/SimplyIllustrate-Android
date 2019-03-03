@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.simplyillustrate.simplyillustrate.R;
-import com.simplyillustrate.simplyillustrate.models.PracticeQuestion;
+import com.simplyillustrate.simplyillustrate.entity.PracticeQuestion;
 
 public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.QuestionViewHolder> {
 

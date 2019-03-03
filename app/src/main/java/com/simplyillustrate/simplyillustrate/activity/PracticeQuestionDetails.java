@@ -1,13 +1,11 @@
 package com.simplyillustrate.simplyillustrate.activity;
 
-import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
 import com.simplyillustrate.simplyillustrate.R;
-import com.simplyillustrate.simplyillustrate.models.PracticeQuestion;
-
+import com.simplyillustrate.simplyillustrate.entity.PracticeQuestion;
 
 import java.util.ArrayList;
 import java.util.Collections;

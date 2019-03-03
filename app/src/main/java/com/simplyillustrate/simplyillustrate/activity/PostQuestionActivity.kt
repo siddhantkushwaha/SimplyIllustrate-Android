@@ -13,7 +13,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class PostQuestions : AppCompatActivity() {
+class PostQuestionActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
@@ -47,7 +47,7 @@ class PostQuestions : AppCompatActivity() {
             override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
 
                 if (response.isSuccessful) {
-                    Toast.makeText(this@PostQuestions, "Question Added", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@PostQuestionActivity, "Question Added", Toast.LENGTH_LONG).show()
                 }
             }
         })

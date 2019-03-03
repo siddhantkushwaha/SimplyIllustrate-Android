@@ -35,6 +35,12 @@ public class RestAPI {
     private static final Retrofit retrofit = retrofitBuilder.build();
     private static final Retrofit retrofitRx = retrofitBuilder.addCallAdapterFactory(RxJava2CallAdapterFactory.create()).build();
 
+
+    /* APIs and functions begin from here */
+
+
+    /* Api and function(s) to write a user */
+
     private interface WriteUserApi {
 
         @Headers("Content-Type: application/json")
@@ -57,6 +63,8 @@ public class RestAPI {
     }
 
 
+    /* Api and function(s) to add a new question */
+
     private interface AddQuestionApi {
 
         @Headers("Content-Type: application/json")
@@ -71,6 +79,8 @@ public class RestAPI {
         call.enqueue(callback);
     }
 
+
+    /* Api and function(s) get practice questions */
 
     private interface GetPracticeQuestionsApi {
 
