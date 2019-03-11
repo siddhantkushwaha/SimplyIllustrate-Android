@@ -28,7 +28,7 @@ import java.util.Map;
 
 public class RestAPI {
 
-    private static final String BASE_URL = "http://192.168.43.97:3000/";
+    private static final String BASE_URL = "http://10.0.55.7:3000/";
 
     private static final Gson gson = new GsonBuilder().setLenient().create();
     private static final Retrofit.Builder retrofitBuilder = new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create(gson));

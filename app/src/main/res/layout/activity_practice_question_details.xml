@@ -4,69 +4,76 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fff"
+    android:padding="8dp"
     tools:context=".activity.PracticeQuestionDetails">
 
     <TextView
         android:id="@+id/question_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="32dp"
         android:layout_marginTop="32dp"
-        android:fontFamily="sans-serif-black"
+        android:padding="6dp"
         android:text="@string/title"
-        android:textSize="24sp"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+        android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:padding="8dp"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/anwser_1"
-        android:layout_width="wrap_content"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/answer1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:fontFamily="sans-serif-medium"
+        android:layout_margin="32dp"
+        android:backgroundTint="#B4C1CC"
+        android:elevation="0dp"
         android:text="@string/answer1"
-        android:textSize="@dimen/answer_text_size"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/question_title" />
 
-    <TextView
-        android:id="@+id/anwser_2"
-        android:layout_width="wrap_content"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/answer2"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:fontFamily="sans-serif-medium"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="32dp"
+        android:backgroundTint="#B4C1CC"
+        android:elevation="0dp"
         android:text="@string/answer2"
-        android:textSize="@dimen/answer_text_size"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/anwser_1" />
+        app:layout_constraintTop_toBottomOf="@+id/answer1" />
 
-    <TextView
-        android:id="@+id/anwser_3"
-        android:layout_width="wrap_content"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/answer3"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:fontFamily="sans-serif-medium"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="32dp"
+        android:backgroundTint="#B4C1CC"
+        android:elevation="0dp"
         android:text="@string/answer3"
-        android:textSize="@dimen/answer_text_size"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/anwser_2" />
+        app:layout_constraintTop_toBottomOf="@+id/answer2" />
 
-    <TextView
-        android:id="@+id/anwser_4"
-        android:layout_width="wrap_content"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/answer4"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:fontFamily="sans-serif-medium"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="32dp"
+        android:backgroundTint="#B4C1CC"
+        android:elevation="0dp"
         android:text="@string/answer4"
-        android:textSize="@dimen/answer_text_size"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/anwser_3" />
+        app:layout_constraintTop_toBottomOf="@+id/answer3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
