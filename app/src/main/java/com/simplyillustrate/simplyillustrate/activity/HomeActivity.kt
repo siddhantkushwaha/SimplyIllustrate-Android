@@ -1,5 +1,6 @@
 package com.simplyillustrate.simplyillustrate.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -41,8 +42,23 @@ class HomeActivity : AppCompatActivity() {
         drawer_layout.addDrawerListener(toggle)
         navigation_view.setNavigationItemSelectedListener {
 
-            displayFragment(it.itemId)
-            drawer_layout.closeDrawer(GravityCompat.START)
+            when (it.itemId) {
+
+                R.id.logout_id -> {
+                    FirebaseAuth.getInstance().signOut()
+                    startActivity(Intent(this@HomeActivity, LoginActivity::class.java))
+                    finish()
+                }
+
+                R.id.profile_id -> {
+                    startActivity(Intent(this@HomeActivity, ProfileActivity::class.java))
+                }
+
+                else -> {
+                    displayFragment(it.itemId)
+                    drawer_layout.closeDrawer(GravityCompat.START)
+                }
+            }
             true
         }
 
