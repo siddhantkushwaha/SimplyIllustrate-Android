@@ -1,5 +1,6 @@
 package com.simplyillustrate.simplyillustrate.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.simplyillustrate.simplyillustrate.R
+import com.simplyillustrate.simplyillustrate.activity.PracticeQuestionDetails
 import com.simplyillustrate.simplyillustrate.adapters.QuestionsAdapter
 import com.simplyillustrate.simplyillustrate.api.RestAPI
 import com.simplyillustrate.simplyillustrate.entity.PracticeQuestion
@@ -73,6 +75,15 @@ class LearningFragment : Fragment() {
                         "Position $clickedItemIndex",
                         Toast.LENGTH_SHORT
                     ).show()
+
+                    val intent = Intent(context, PracticeQuestionDetails::class.java)
+                    val bundle = Bundle()
+                    bundle.putParcelable("question", practiceQuestions[clickedItemIndex])
+                    intent.putExtras(bundle)
+
+                    println(practiceQuestions[clickedItemIndex])
+
+                    startActivity(intent)
                 })
         rootView.rv_questions.layoutManager = LinearLayoutManager(activity)
     }

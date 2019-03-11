@@ -32,7 +32,7 @@ class PostQuestionActivity : AppCompatActivity() {
 
         question.title = tv_title.text.toString().trim()
         question.difficulty = tv_title.text.toString().trim()
-        question.tags = listOf(tv_title.text.toString().trim())
+        question.tags = arrayListOf(tv_title.text.toString().trim())
         question.description = tv_description.text.toString().trim()
 
         question.createdBy = "123456789"

@@ -4,7 +4,7 @@ import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
-class PracticeQuestion : Parcelable {
+class PracticeQuestion() : Parcelable {
 
     @SerializedName("tags")
     var tags: List<String>? = null
@@ -36,36 +36,30 @@ class PracticeQuestion : Parcelable {
     @SerializedName("__v")
     var v: Int? = null
 
-    protected constructor(parcel: Parcel) {
-        parcel.readList(this.tags, java.lang.String::class.java.classLoader)
-        parcel.readList(this.incorrectAnswers, java.lang.String::class.java.classLoader)
-        this.id = parcel.readValue(String::class.java.classLoader) as String
-        this.createdBy = parcel.readValue(String::class.java.classLoader) as String
-        this.type = parcel.readValue(String::class.java.classLoader) as String
-        this.difficulty = parcel.readValue(String::class.java.classLoader) as String
-        this.question = parcel.readValue(String::class.java.classLoader) as String
-        this.correctAnswer = parcel.readValue(String::class.java.classLoader) as String
-        this.timestamp = parcel.readValue(String::class.java.classLoader) as String
-        this.v = parcel.readValue(Int::class.java.classLoader) as Int
+    constructor(parcel: Parcel) : this() {
+        tags = parcel.createStringArrayList()
+        incorrectAnswers = parcel.createStringArrayList()
+        id = parcel.readString()
+        createdBy = parcel.readString()
+        type = parcel.readString()
+        difficulty = parcel.readString()
+        question = parcel.readString()
+        correctAnswer = parcel.readString()
+        timestamp = parcel.readString()
+        v = parcel.readValue(Int::class.java.classLoader) as? Int
     }
 
-    constructor() {}
-
-    override fun toString(): String {
-        return "question -> $question correctAnswer -> $correctAnswer timestamp -> $timestamp"
-    }
-
-    override fun writeToParcel(dest: Parcel, flags: Int) {
-        dest.writeList(tags)
-        dest.writeList(incorrectAnswers)
-        dest.writeValue(id)
-        dest.writeValue(createdBy)
-        dest.writeValue(type)
-        dest.writeValue(difficulty)
-        dest.writeValue(question)
-        dest.writeValue(correctAnswer)
-        dest.writeValue(timestamp)
-        dest.writeValue(v)
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeStringList(tags)
+        parcel.writeStringList(incorrectAnswers)
+        parcel.writeString(id)
+        parcel.writeString(createdBy)
+        parcel.writeString(type)
+        parcel.writeString(difficulty)
+        parcel.writeString(question)
+        parcel.writeString(correctAnswer)
+        parcel.writeString(timestamp)
+        parcel.writeValue(v)
     }
 
     override fun describeContents(): Int {
