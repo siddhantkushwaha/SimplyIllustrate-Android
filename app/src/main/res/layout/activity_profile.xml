@@ -14,7 +14,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="310dp"
-            android:background="@color/blue"
+            android:background="@color/colorPrimary"
             android:orientation="vertical">
 
             <ImageView
@@ -67,7 +67,7 @@
                         android:layout_height="wrap_content"
                         android:paddingTop="10dp"
                         android:text="20"
-                        android:textColor="@color/blue"
+                        android:textColor="@color/textColorPrimary"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
@@ -91,7 +91,7 @@
                         android:layout_height="wrap_content"
                         android:paddingTop="10dp"
                         android:text="10"
-                        android:textColor="@color/blue"
+                        android:textColor="@color/textColorPrimary"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
@@ -115,7 +115,7 @@
                         android:layout_height="wrap_content"
                         android:paddingTop="10dp"
                         android:text="10"
-                        android:textColor="@color/blue"
+                        android:textColor="@color/textColorPrimary"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
@@ -149,6 +149,7 @@
                 android:layout_gravity="center_vertical"
                 android:paddingLeft="20dp"
                 android:text="examples@gmail.com"
+                android:textColor="@color/textColorPrimary"
                 android:textSize="16sp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -185,15 +186,15 @@
 
     </LinearLayout>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="center"
         android:layout_marginTop="35dp"
-        android:background="@color/blue"
-        android:padding="6dp"
+        style="@style/Widget.SimplyIllustrate.Button"
         android:text="Save"
-
-        android:textColor="#fff" />
+        android:background="@color/colorAccent"
+        app:cornerRadius="6dp"/>
 
 </LinearLayout>
