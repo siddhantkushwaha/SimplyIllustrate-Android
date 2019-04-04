@@ -48,18 +48,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun refreshLayout() {
-        when (layoutMode) {
-
-            true -> {
-                submit.text = "Login"
-                toggleLayout.text = "No account yet? Create one"
-            }
-
-            false -> {
-                submit.text = "Sign Up"
-                toggleLayout.text = "Already have an Account"
-            }
-        }
+        submit.setText(if (layoutMode) R.string.sign_in else R.string.create_account)
+        toggleLayout.setText(if (layoutMode) R.string.ask_sign_in else R.string.ask_create_account)
     }
 
     private fun signUp(email: String, password: String) {

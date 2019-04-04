@@ -11,40 +11,23 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:clipChildren="false"
         android:clipToPadding="false"
         android:orientation="vertical"
-        android:padding="24dp"
-        android:paddingTop="16dp">
+        android:padding="30dp">
 
         <ImageView
-            android:layout_width="96dp"
-            android:layout_height="96dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="48dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="24dp"
             android:src="@drawable/ic_logo" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="Examples"
-            android:textAppearance="@style/TextAppearance.SimplyIllustrate.Title"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="Simply Illustrate!"
-            android:textAppearance="@style/TextAppearance.AppCompat.Caption"/>
-
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.SimplyIllustrate.TextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
             android:hint="@string/hint_email">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -61,7 +44,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/hint_password"
-            app:errorEnabled="true"
             app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -71,11 +53,12 @@
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/submit"
             style="@style/Widget.SimplyIllustrate.Button"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:text="@string/submit_text"
             android:textAllCaps="false" />
 
@@ -83,9 +66,8 @@
             android:id="@+id/toggleLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
             android:gravity="center"
-            android:text="@string/create_account"
-            android:textSize="16dp" />
+            android:text="@string/ask_create_account"
+            android:textSize="16sp" />
     </LinearLayout>
 </ScrollView>

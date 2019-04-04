@@ -3,9 +3,11 @@
     <color name="colorPrimary">#43a3f9</color>
     <color name="colorPrimaryDark">#1485fb</color>
     <color name="colorAccent">#fc3d81</color>
-    <color name="blue">#bddff4</color>
-    <color name="graylight">#f5f5f5</color>
+
     <color name="textColorPrimary">#c97f4c</color>
     <color name="colorControlActivated">#aa6344</color>
     <color name="loginPageBackgroundColor">#FFFFFF</color>
+
+    <color name="blue">#bddff4</color>
+    <color name="graylight">#f5f5f5</color>
 </resources>
