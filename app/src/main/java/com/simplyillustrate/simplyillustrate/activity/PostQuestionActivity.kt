@@ -15,8 +15,8 @@ import retrofit2.Response
 
 class PostQuestionActivity : AppCompatActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_post_question)
 
@@ -31,11 +31,12 @@ class PostQuestionActivity : AppCompatActivity() {
         val question = Question()
 
         question.title = tv_title.text.toString().trim()
-        question.difficulty = tv_title.text.toString().trim()
-        question.tags = arrayListOf(tv_title.text.toString().trim())
+        question.difficulty = tv_difficulty.text.toString().trim()
+        question.tags = arrayListOf("5c7c15892fda391295a2e78e")
+                //arrayListOf(tv_title.text.toString().trim())
         question.description = tv_description.text.toString().trim()
 
-        question.createdBy = "123456789"
+        question.createdBy = "5c7c0f7d953d2810dae02a4f"
 
         RestAPI.addQuestion(question, object : Callback<JsonObject> {
 

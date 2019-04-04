@@ -26,13 +26,12 @@
 
         <activity android:name=".activity.HomeActivity" />
 
-        <activity
-            android:name=".activity.ProfileActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".activity.ProfileActivity" />
 
-        <activity android:name=".activity.PostQuestionActivity"/>
+        <activity android:name=".activity.PostQuestionActivity">
+        </activity>
 
-        <activity android:name=".activity.PracticeQuestionDetails"/>
+        <activity android:name=".activity.PracticeQuestionDetails" />
 
         <meta-data
             android:name="io.fabric.ApiKey"

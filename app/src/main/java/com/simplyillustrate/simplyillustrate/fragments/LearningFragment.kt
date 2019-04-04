@@ -43,7 +43,7 @@ class LearningFragment : Fragment() {
     private fun getQuestions() {
 
         val map = HashMap<String, String>()
-        map["tags"] = "5c742bab10a0e463cc1460a3"
+        map["tags"] = "5c6e63642875e201dc4d7dae"
 
         compositeDisposable =
             RestAPI.subscribeToPracticeQuestions(map, object : DisposableObserver<PracticeQuestion>() {

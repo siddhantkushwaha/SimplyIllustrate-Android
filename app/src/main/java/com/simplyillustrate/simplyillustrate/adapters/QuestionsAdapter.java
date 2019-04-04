@@ -37,7 +37,8 @@ public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.Ques
     public void onBindViewHolder(@NonNull QuestionViewHolder holder, int position) {
         holder.title.setText(questionsList.get(position).getQuestion());
         holder.difficulty.setText(questionsList.get(position).getDifficulty());
-        holder.category.setText(questionsList.get(position).getTags().toString());
+        holder.category.setText("Computer Science");
+        /*questionsList.get(position).getTags().toString()*/
     }
 
     @Override
