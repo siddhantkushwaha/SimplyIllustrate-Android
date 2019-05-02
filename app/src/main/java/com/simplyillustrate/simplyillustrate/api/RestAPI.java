@@ -15,20 +15,19 @@ import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
 import retrofit2.Call;
 import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.*;
 
-import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class RestAPI {
 
-    private static final String BASE_URL = "http://192.168.43.140:3000/";
+    private static final String BASE_URL = "http://10.0.32.79:3000/";
 
     private static final Gson gson = new GsonBuilder().setLenient().create();
     private static final Retrofit.Builder retrofitBuilder = new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create(gson));
@@ -95,5 +94,39 @@ public class RestAPI {
                 .flatMap((Function<List<PracticeQuestion>, Observable<PracticeQuestion>>) Observable::fromIterable).subscribeWith(disposableObserver));
 
         return compositeDisposable;
+    }
+
+    /* Api to get questions by userId */
+
+    private interface GetQuestionsByUserApi {
+
+        @Headers("Content-Type: application/json")
+        @GET("/posts")
+        Call<ArrayList<Question>> getQuestionsByUid(@Query("uid") String uid);
+    }
+
+    public static void getQuestionsByUserId(@NonNull String uid, Callback<ArrayList<Question>> callback) {
+
+        GetQuestionsByUserApi getQuestionsByUserApi = retrofit.create(GetQuestionsByUserApi.class);
+
+        Call<ArrayList<Question>> call = getQuestionsByUserApi.getQuestionsByUid(uid);
+        call.enqueue(callback);
+    }
+
+    /* Api to get all questions */
+
+    private interface GetAllQuestionsApi {
+
+        @Headers("Content-Type: application/json")
+        @GET("/allPosts")
+        Call<ArrayList<Question>> getAllQuestions();
+    }
+
+    public static void getAllQuestions(Callback<ArrayList<Question>> callback) {
+
+        GetAllQuestionsApi getAllQuestionsApi = retrofit.create(GetAllQuestionsApi.class);
+
+        Call<ArrayList<Question>> call = getAllQuestionsApi.getAllQuestions();
+        call.enqueue(callback);
     }
 }

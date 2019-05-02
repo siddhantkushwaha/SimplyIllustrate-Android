@@ -15,7 +15,7 @@
         android:theme="@style/Theme.SimplyIllustrate"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-
+        <activity android:name=".activity.QuestionDetails"></activity>
         <activity android:name=".activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,14 +23,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".activity.HomeActivity" />
-
         <activity android:name=".activity.ProfileActivity" />
-
-        <activity android:name=".activity.PostQuestionActivity">
-        </activity>
-
+        <activity android:name=".activity.PostQuestionActivity"></activity>
         <activity android:name=".activity.PracticeQuestionDetails" />
 
         <meta-data

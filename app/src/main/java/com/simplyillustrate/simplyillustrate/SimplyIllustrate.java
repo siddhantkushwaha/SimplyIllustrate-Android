@@ -6,6 +6,8 @@ import io.fabric.sdk.android.Fabric;
 
 public class SimplyIllustrate extends Application {
 
+    public String userId;
+
     @Override
     public void onCreate() {
         super.onCreate();

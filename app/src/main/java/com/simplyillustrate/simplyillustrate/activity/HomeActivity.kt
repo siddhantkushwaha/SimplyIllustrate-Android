@@ -24,6 +24,11 @@ class HomeActivity : AppCompatActivity() {
 
     var isAtHome: Boolean = false
 
+    // stores oid via making a call to the server
+    companion object {
+        var userId: String? = null
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_navigation_drawer)
@@ -72,8 +77,9 @@ class HomeActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
 
+                userId = response.body()?.get("_id")?.asString
             }
-        });
+        })
     }
 
     private fun displayFragment(id: Int) {
