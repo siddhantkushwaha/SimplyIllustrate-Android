@@ -1,7 +1,8 @@
 package com.simplyillustrate.simplyillustrate.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
 import com.simplyillustrate.simplyillustrate.R
 import kotlinx.android.synthetic.main.activity_profile.*
 
@@ -14,5 +15,10 @@ class ProfileActivity : AppCompatActivity() {
         btn_save.setOnClickListener {
             finish()
         }
+
+        email.text = FirebaseAuth.getInstance().currentUser?.email ?: "None"
+        phone.setText("+91 7351651000")
+
+        username.setText(FirebaseAuth.getInstance().currentUser?.email?.split("@")?.get(0) ?: "None")
     }
 }

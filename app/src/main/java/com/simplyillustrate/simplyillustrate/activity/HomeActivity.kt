@@ -16,6 +16,7 @@ import com.simplyillustrate.simplyillustrate.fragments.PostsFragment
 import com.simplyillustrate.simplyillustrate.fragments.QuestionsFragment
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.layout_navigation_drawer.*
+import kotlinx.android.synthetic.main.layout_navigation_header.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -80,6 +81,10 @@ class HomeActivity : AppCompatActivity() {
                 userId = response.body()?.get("_id")?.asString
             }
         })
+
+        navigation_view.getHeaderView(0).username.text =
+            FirebaseAuth.getInstance().currentUser?.email?.split("@")?.get(0) ?: "None"
+        navigation_view.getHeaderView(0).email.text = FirebaseAuth.getInstance().currentUser?.email ?: "None"
     }
 
     private fun displayFragment(id: Int) {

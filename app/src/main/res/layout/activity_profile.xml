@@ -25,6 +25,7 @@
                 android:src="@drawable/man" />
 
             <EditText
+                android:id="@+id/username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -144,6 +145,7 @@
                 android:src="@drawable/email" />
 
             <TextView
+                android:id="@+id/email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -167,6 +169,7 @@
                 android:src="@drawable/phone" />
 
             <EditText
+                android:id="@+id/phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -176,12 +179,12 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="18dp"
-                android:background="@android:color/transparent"
-                android:src="@drawable/edit" />
+            <!--<ImageButton-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginLeft="18dp"-->
+                <!--android:background="@android:color/transparent"-->
+                <!--android:src="@drawable/edit" />-->
         </LinearLayout>
 
     </LinearLayout>
