@@ -11,10 +11,10 @@ import com.simplyillustrate.simplyillustrate.entity.Question;
 
 import java.util.ArrayList;
 
-public class QuestionsFeedAdapter extends RecyclerView.Adapter<QuestionsFeedAdapter.QuestionsFeedViewHolder>{
+public class QuestionsFeedAdapter extends RecyclerView.Adapter<QuestionsFeedAdapter.QuestionsFeedViewHolder> {
 
-    private ArrayList<Question> questionsList;
     final private QuestionsFeedAdapter.ListItemClickListener mOnClickListener;
+    private ArrayList<Question> questionsList;
 
     public QuestionsFeedAdapter(ArrayList<Question> questionsList, QuestionsFeedAdapter.ListItemClickListener listener) {
         mOnClickListener = listener;
@@ -36,16 +36,16 @@ public class QuestionsFeedAdapter extends RecyclerView.Adapter<QuestionsFeedAdap
         holder.category.setText("Computer Science");
     }
 
-    public interface ListItemClickListener {
-        void onListItemClick(View view,int clickedItemIndex);
-    }
-
     @Override
     public int getItemCount() {
         return questionsList.size();
     }
 
-    public class QuestionsFeedViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public interface ListItemClickListener {
+        void onListItemClick(View view, int clickedItemIndex);
+    }
+
+    public class QuestionsFeedViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView title;
         TextView difficulty;
@@ -63,7 +63,7 @@ public class QuestionsFeedAdapter extends RecyclerView.Adapter<QuestionsFeedAdap
         @Override
         public void onClick(View v) {
             int clickedPosition = getAdapterPosition();
-            mOnClickListener.onListItemClick(v,clickedPosition);
+            mOnClickListener.onListItemClick(v, clickedPosition);
         }
     }
 }

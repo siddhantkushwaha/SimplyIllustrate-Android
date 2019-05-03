@@ -104,9 +104,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
+            android:backgroundTint="@color/colorAccent"
             android:text="@string/submit"
-            android:textAllCaps="false"
-            android:backgroundTint="@color/colorAccent"/>
+            android:textAllCaps="false" />
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.SimplyIllustrate.TextInputLayout"

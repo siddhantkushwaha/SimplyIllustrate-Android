@@ -180,11 +180,11 @@
                 android:textStyle="bold" />
 
             <!--<ImageButton-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginLeft="18dp"-->
-                <!--android:background="@android:color/transparent"-->
-                <!--android:src="@drawable/edit" />-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="18dp"-->
+            <!--android:background="@android:color/transparent"-->
+            <!--android:src="@drawable/edit" />-->
         </LinearLayout>
 
     </LinearLayout>
@@ -192,13 +192,13 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_save"
+        style="@style/Widget.SimplyIllustrate.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="35dp"
-        style="@style/Widget.SimplyIllustrate.Button"
-        android:text="Save"
         android:background="@color/colorAccent"
-        app:cornerRadius="6dp"/>
+        android:text="Save"
+        app:cornerRadius="6dp" />
 
 </LinearLayout>

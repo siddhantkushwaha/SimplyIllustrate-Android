@@ -1,23 +1,21 @@
 package com.simplyillustrate.simplyillustrate.adapters;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import java.util.ArrayList;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.simplyillustrate.simplyillustrate.R;
 import com.simplyillustrate.simplyillustrate.entity.PracticeQuestion;
 
+import java.util.ArrayList;
+
 public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.QuestionViewHolder> {
 
 
-    private ArrayList<PracticeQuestion> questionsList;
     final private ListItemClickListener mOnClickListener;
+    private ArrayList<PracticeQuestion> questionsList;
 
     public QuestionsAdapter(ArrayList<PracticeQuestion> questionsList, ListItemClickListener listener) {
         mOnClickListener = listener;
@@ -47,7 +45,7 @@ public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.Ques
     }
 
     public interface ListItemClickListener {
-        void onListItemClick(View view,int clickedItemIndex);
+        void onListItemClick(View view, int clickedItemIndex);
     }
 
 
@@ -69,7 +67,7 @@ public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.Ques
         @Override
         public void onClick(View v) {
             int clickedPosition = getAdapterPosition();
-            mOnClickListener.onListItemClick(v,clickedPosition);
+            mOnClickListener.onListItemClick(v, clickedPosition);
         }
     }
 }

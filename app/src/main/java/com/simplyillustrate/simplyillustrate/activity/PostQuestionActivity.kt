@@ -1,7 +1,6 @@
 package com.simplyillustrate.simplyillustrate.activity
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.JsonObject
@@ -33,7 +32,7 @@ class PostQuestionActivity : AppCompatActivity() {
         question.title = tv_title.text.toString().trim()
         question.difficulty = tv_difficulty.text.toString().trim()
         question.tags = arrayListOf("5c7c15892fda391295a2e78e")
-                //arrayListOf(tv_title.text.toString().trim())
+        //arrayListOf(tv_title.text.toString().trim())
         question.description = tv_description.text.toString().trim()
 
         question.createdBy = "5c7c0f7d953d2810dae02a4f"

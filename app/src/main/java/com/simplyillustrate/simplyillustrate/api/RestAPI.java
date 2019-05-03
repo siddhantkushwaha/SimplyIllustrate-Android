@@ -40,28 +40,11 @@ public class RestAPI {
 
     /* Api and function(s) to write a user */
 
-    private interface WriteUserApi {
-
-        @Headers("Content-Type: application/json")
-        @POST("writeUser")
-        Call<JsonObject> writeUser(@Body User user);
-    }
-
     public static void requestWriteUser(@NonNull User user, @NonNull Callback<JsonObject> callback) {
 
         WriteUserApi writeUserApi = retrofit.create(WriteUserApi.class);
         Call<JsonObject> call = writeUserApi.writeUser(user);
         call.enqueue(callback);
-    }
-
-
-    /* Api and function(s) to add a new question */
-
-    private interface AddQuestionApi {
-
-        @Headers("Content-Type: application/json")
-        @POST("addQuestion")
-        Call<JsonObject> addQuestion(@Body Question question);
     }
 
     public static void addQuestion(@NonNull Question question, @NonNull Callback<JsonObject> callback) {
@@ -72,14 +55,7 @@ public class RestAPI {
     }
 
 
-    /* Api and function(s) get practice questions */
-
-    private interface GetPracticeQuestionsApi {
-
-        @Headers("Content-Type: application/json")
-        @GET("/learning")
-        Observable<List<PracticeQuestion>> getPracticeQuestions(@QueryMap Map<String, String> queryValues);
-    }
+    /* Api and function(s) to add a new question */
 
     public static CompositeDisposable subscribeToPracticeQuestions(HashMap<String, String> queryData, DisposableObserver<PracticeQuestion> disposableObserver) {
 
@@ -96,15 +72,6 @@ public class RestAPI {
         return compositeDisposable;
     }
 
-    /* Api to get questions by userId */
-
-    private interface GetQuestionsByUserApi {
-
-        @Headers("Content-Type: application/json")
-        @GET("/posts")
-        Call<ArrayList<Question>> getQuestionsByUid(@Query("uid") String uid);
-    }
-
     public static void getQuestionsByUserId(@NonNull String uid, Callback<ArrayList<Question>> callback) {
 
         GetQuestionsByUserApi getQuestionsByUserApi = retrofit.create(GetQuestionsByUserApi.class);
@@ -113,14 +80,8 @@ public class RestAPI {
         call.enqueue(callback);
     }
 
-    /* Api to get all questions */
 
-    private interface GetAllQuestionsApi {
-
-        @Headers("Content-Type: application/json")
-        @GET("/allPosts")
-        Call<ArrayList<Question>> getAllQuestions();
-    }
+    /* Api and function(s) get practice questions */
 
     public static void getAllQuestions(Callback<ArrayList<Question>> callback) {
 
@@ -128,5 +89,44 @@ public class RestAPI {
 
         Call<ArrayList<Question>> call = getAllQuestionsApi.getAllQuestions();
         call.enqueue(callback);
+    }
+
+    private interface WriteUserApi {
+
+        @Headers("Content-Type: application/json")
+        @POST("writeUser")
+        Call<JsonObject> writeUser(@Body User user);
+    }
+
+    /* Api to get questions by userId */
+
+    private interface AddQuestionApi {
+
+        @Headers("Content-Type: application/json")
+        @POST("addQuestion")
+        Call<JsonObject> addQuestion(@Body Question question);
+    }
+
+    private interface GetPracticeQuestionsApi {
+
+        @Headers("Content-Type: application/json")
+        @GET("/learning")
+        Observable<List<PracticeQuestion>> getPracticeQuestions(@QueryMap Map<String, String> queryValues);
+    }
+
+    /* Api to get all questions */
+
+    private interface GetQuestionsByUserApi {
+
+        @Headers("Content-Type: application/json")
+        @GET("/posts")
+        Call<ArrayList<Question>> getQuestionsByUid(@Query("uid") String uid);
+    }
+
+    private interface GetAllQuestionsApi {
+
+        @Headers("Content-Type: application/json")
+        @GET("/allPosts")
+        Call<ArrayList<Question>> getAllQuestions();
     }
 }
