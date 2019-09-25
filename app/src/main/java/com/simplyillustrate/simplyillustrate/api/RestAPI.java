@@ -1,12 +1,14 @@
 package com.simplyillustrate.simplyillustrate.api;
 
 import androidx.annotation.NonNull;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.simplyillustrate.simplyillustrate.entity.PracticeQuestion;
 import com.simplyillustrate.simplyillustrate.entity.Question;
 import com.simplyillustrate.simplyillustrate.entity.User;
+
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -27,7 +29,9 @@ import java.util.Map;
 
 public class RestAPI {
 
-    private static final String BASE_URL = "http://10.0.32.79:3000/";
+    private static final String IP = "23.96.13.200";
+    private static final String PORT = "3000";
+    private static final String BASE_URL = String.format("http://%s:%s/", IP, PORT);
 
     private static final Gson gson = new GsonBuilder().setLenient().create();
     private static final Retrofit.Builder retrofitBuilder = new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create(gson));
@@ -37,14 +41,30 @@ public class RestAPI {
 
     /* APIs and functions begin from here */
 
-
     /* Api and function(s) to write a user */
+
+    private interface WriteUserApi {
+
+        @Headers("Content-Type: application/json")
+        @POST("writeUser")
+        Call<JsonObject> writeUser(@Body User user);
+    }
 
     public static void requestWriteUser(@NonNull User user, @NonNull Callback<JsonObject> callback) {
 
         WriteUserApi writeUserApi = retrofit.create(WriteUserApi.class);
         Call<JsonObject> call = writeUserApi.writeUser(user);
         call.enqueue(callback);
+    }
+
+
+    /* Api and function(s) to add a new question */
+
+    private interface AddQuestionApi {
+
+        @Headers("Content-Type: application/json")
+        @POST("addQuestion")
+        Call<JsonObject> addQuestion(@Body Question question);
     }
 
     public static void addQuestion(@NonNull Question question, @NonNull Callback<JsonObject> callback) {
@@ -55,7 +75,14 @@ public class RestAPI {
     }
 
 
-    /* Api and function(s) to add a new question */
+    /* Api and function(s) get practice questions */
+
+    private interface GetPracticeQuestionsApi {
+
+        @Headers("Content-Type: application/json")
+        @GET("/learning")
+        Observable<List<PracticeQuestion>> getPracticeQuestions(@QueryMap Map<String, String> queryValues);
+    }
 
     public static CompositeDisposable subscribeToPracticeQuestions(HashMap<String, String> queryData, DisposableObserver<PracticeQuestion> disposableObserver) {
 
@@ -72,16 +99,15 @@ public class RestAPI {
         return compositeDisposable;
     }
 
-    public static void getQuestionsByUserId(@NonNull String uid, Callback<ArrayList<Question>> callback) {
 
-        GetQuestionsByUserApi getQuestionsByUserApi = retrofit.create(GetQuestionsByUserApi.class);
+    /* Api to get all questions */
 
-        Call<ArrayList<Question>> call = getQuestionsByUserApi.getQuestionsByUid(uid);
-        call.enqueue(callback);
+    private interface GetAllQuestionsApi {
+
+        @Headers("Content-Type: application/json")
+        @GET("/allPosts")
+        Call<ArrayList<Question>> getAllQuestions();
     }
-
-
-    /* Api and function(s) get practice questions */
 
     public static void getAllQuestions(Callback<ArrayList<Question>> callback) {
 
@@ -91,30 +117,8 @@ public class RestAPI {
         call.enqueue(callback);
     }
 
-    private interface WriteUserApi {
-
-        @Headers("Content-Type: application/json")
-        @POST("writeUser")
-        Call<JsonObject> writeUser(@Body User user);
-    }
 
     /* Api to get questions by userId */
-
-    private interface AddQuestionApi {
-
-        @Headers("Content-Type: application/json")
-        @POST("addQuestion")
-        Call<JsonObject> addQuestion(@Body Question question);
-    }
-
-    private interface GetPracticeQuestionsApi {
-
-        @Headers("Content-Type: application/json")
-        @GET("/learning")
-        Observable<List<PracticeQuestion>> getPracticeQuestions(@QueryMap Map<String, String> queryValues);
-    }
-
-    /* Api to get all questions */
 
     private interface GetQuestionsByUserApi {
 
@@ -123,10 +127,11 @@ public class RestAPI {
         Call<ArrayList<Question>> getQuestionsByUid(@Query("uid") String uid);
     }
 
-    private interface GetAllQuestionsApi {
+    public static void getQuestionsByUserId(@NonNull String uid, Callback<ArrayList<Question>> callback) {
 
-        @Headers("Content-Type: application/json")
-        @GET("/allPosts")
-        Call<ArrayList<Question>> getAllQuestions();
+        GetQuestionsByUserApi getQuestionsByUserApi = retrofit.create(GetQuestionsByUserApi.class);
+
+        Call<ArrayList<Question>> call = getQuestionsByUserApi.getQuestionsByUid(uid);
+        call.enqueue(callback);
     }
 }
