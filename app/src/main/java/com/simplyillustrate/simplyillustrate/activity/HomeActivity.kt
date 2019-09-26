@@ -84,23 +84,24 @@ class HomeActivity : AppCompatActivity() {
 
         navigation_view.getHeaderView(0).username.text =
             FirebaseAuth.getInstance().currentUser?.email?.split("@")?.get(0) ?: "None"
-        navigation_view.getHeaderView(0).email.text = FirebaseAuth.getInstance().currentUser?.email ?: "None"
+        navigation_view.getHeaderView(0).email.text =
+            FirebaseAuth.getInstance().currentUser?.email ?: "None"
     }
 
     private fun displayFragment(id: Int) {
         val fragment = when (id) {
             R.id.questions_id -> {
-                Toast.makeText(this, "Question id clicked", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Question id clicked", Toast.LENGTH_SHORT).show()
                 isAtHome = true
                 QuestionsFragment.getNewInstance()
             }
             R.id.posts_id -> {
-                Toast.makeText(this, "Posts id clicked", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Posts id clicked", Toast.LENGTH_SHORT).show()
                 isAtHome = false
                 PostsFragment.getNewInstance()
             }
             R.id.learning_id -> {
-                Toast.makeText(this, "Learning id clicked", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Learning id clicked", Toast.LENGTH_SHORT).show()
                 isAtHome = false
                 LearningFragment()
             }
@@ -114,18 +115,18 @@ class HomeActivity : AppCompatActivity() {
         transaction.commit()
 
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
-            drawer_layout.closeDrawer(GravityCompat.START);
+            drawer_layout.closeDrawer(GravityCompat.START)
         }
     }
 
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
-            drawer_layout.closeDrawer(GravityCompat.START);
+            drawer_layout.closeDrawer(GravityCompat.START)
         }
         if (!isAtHome) {
             displayFragment(R.id.questions_id)
         } else {
-            super.onBackPressed();
+            super.onBackPressed()
         }
     }
 }

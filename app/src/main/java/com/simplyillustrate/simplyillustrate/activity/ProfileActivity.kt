@@ -17,8 +17,9 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         email.text = FirebaseAuth.getInstance().currentUser?.email ?: "None"
-        phone.setText("+91 7351651000")
 
-        username.setText(FirebaseAuth.getInstance().currentUser?.email?.split("@")?.get(0) ?: "None")
+        username.setText(
+            FirebaseAuth.getInstance().currentUser?.email?.split("@")?.get(0) ?: "None"
+        )
     }
 }

@@ -5,6 +5,7 @@ import androidx.annotation.NonNull;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
+import com.simplyillustrate.simplyillustrate.entity.Answer;
 import com.simplyillustrate.simplyillustrate.entity.PracticeQuestion;
 import com.simplyillustrate.simplyillustrate.entity.Question;
 import com.simplyillustrate.simplyillustrate.entity.User;
@@ -37,6 +38,8 @@ public class RestAPI {
     private static final Retrofit.Builder retrofitBuilder = new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create(gson));
     private static final Retrofit retrofit = retrofitBuilder.build();
     private static final Retrofit retrofitRx = retrofitBuilder.addCallAdapterFactory(RxJava2CallAdapterFactory.create()).build();
+
+
 
 
     /* APIs and functions begin from here */
@@ -132,6 +135,23 @@ public class RestAPI {
         GetQuestionsByUserApi getQuestionsByUserApi = retrofit.create(GetQuestionsByUserApi.class);
 
         Call<ArrayList<Question>> call = getQuestionsByUserApi.getQuestionsByUid(uid);
+        call.enqueue(callback);
+    }
+
+    /* Api to get questions by userId */
+
+    private interface GetAnswersByQuestionIdApi {
+
+        @FormUrlEncoded
+        @POST("/answers")
+        Call<ArrayList<Answer>> getAnswersByQuestionId(@Field("question_id") String question_id);
+    }
+
+    public static void getAnswersByQuestionId(@NonNull String question_id, Callback<ArrayList<Answer>> callback) {
+
+        GetAnswersByQuestionIdApi getAnswersByQuestionIdApi = retrofit.create(GetAnswersByQuestionIdApi.class);
+
+        Call<ArrayList<Answer>> call = getAnswersByQuestionIdApi.getAnswersByQuestionId(question_id);
         call.enqueue(callback);
     }
 }

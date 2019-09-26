@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.gson.JsonObject
 
 import com.simplyillustrate.simplyillustrate.R
 import com.simplyillustrate.simplyillustrate.activity.QuestionDetails
@@ -34,7 +35,11 @@ class QuestionsFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
 
         Log.i(QuestionsFragment.TAG, "Fragment Opened")
 
@@ -75,7 +80,10 @@ class QuestionsFragment : Fragment() {
                 Log.i(TAG, t.message)
             }
 
-            override fun onResponse(call: Call<ArrayList<Question>>, response: Response<ArrayList<Question>>) {
+            override fun onResponse(
+                call: Call<ArrayList<Question>>,
+                response: Response<ArrayList<Question>>
+            ) {
 
                 Log.i(TAG, response.body().toString())
 
@@ -88,7 +96,6 @@ class QuestionsFragment : Fragment() {
                 rootView.rv_questions.adapter?.notifyDataSetChanged()
             }
         })
-
     }
 }
 
