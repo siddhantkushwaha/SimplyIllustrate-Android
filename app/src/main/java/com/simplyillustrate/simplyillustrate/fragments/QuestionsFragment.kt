@@ -6,18 +6,24 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.gson.JsonObject
 
 import com.simplyillustrate.simplyillustrate.R
+import com.simplyillustrate.simplyillustrate.SimplyIllustrate
 import com.simplyillustrate.simplyillustrate.activity.QuestionDetails
 import com.simplyillustrate.simplyillustrate.adapters.QuestionsFeedAdapter
 import com.simplyillustrate.simplyillustrate.api.RestAPI
 import com.simplyillustrate.simplyillustrate.entity.Question
-import kotlinx.android.synthetic.main.learning_fragment.view.*
+import com.simplyillustrate.simplyillustrate.entity.Tag
+
+import kotlinx.android.synthetic.main.questions_fragment.view.*
+
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,7 +32,8 @@ class QuestionsFragment : Fragment() {
 
     private lateinit var rootView: View
 
-    private val questionsFeed = java.util.ArrayList<Question>()
+    private val questionsFeed = ArrayList<Question>()
+    private val tagNames = ArrayList<String>()
 
     companion object {
         private val TAG = QuestionsFragment::class.java.toString()
@@ -41,11 +48,63 @@ class QuestionsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        Log.i(QuestionsFragment.TAG, "Fragment Opened")
+        Log.i(TAG, "Fragment Opened")
 
         rootView = inflater.inflate(R.layout.questions_fragment, container, false)
 
         initViews()
+
+        val tagAdapter = ArrayAdapter(
+            context!!,
+            android.R.layout.simple_spinner_dropdown_item,
+            tagNames
+        )
+        rootView.tag_spinner.adapter = tagAdapter
+        rootView.tag_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+
+            override fun onItemSelected(
+                adapter: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                println(SimplyIllustrate.tags[position]?.name)
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+
+            }
+        }
+        /* get tags and add to spinner */
+        RestAPI.getAllTags(object : Callback<ArrayList<Tag>> {
+            override fun onFailure(call: Call<ArrayList<Tag>>, t: Throwable) {
+                t.printStackTrace()
+            }
+
+            override fun onResponse(
+                call: Call<ArrayList<Tag>>,
+                response: Response<ArrayList<Tag>>
+            ) {
+                /* update global variables */
+                SimplyIllustrate.tags.clear()
+                SimplyIllustrate.tagsMap.clear()
+
+                val tag = Tag()
+                tag.id = "all"
+                tag.name = "All"
+                SimplyIllustrate.tags.add(tag)
+
+                response.body()?.forEach {
+                    SimplyIllustrate.tags.add(it)
+                    SimplyIllustrate.tagsMap[it.id] = it.name
+                }
+
+                tagNames.clear()
+                tagNames.addAll(SimplyIllustrate.tags.map { it.name ?: "null" })
+                tagAdapter.notifyDataSetChanged()
+            }
+
+        })
 
         return rootView
     }
@@ -77,7 +136,7 @@ class QuestionsFragment : Fragment() {
         RestAPI.getAllQuestions(object : Callback<ArrayList<Question>> {
             override fun onFailure(call: Call<ArrayList<Question>>, t: Throwable) {
 
-                Log.i(TAG, t.message)
+                t.printStackTrace()
             }
 
             override fun onResponse(

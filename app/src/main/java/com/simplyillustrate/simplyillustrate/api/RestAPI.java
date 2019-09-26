@@ -8,6 +8,7 @@ import com.google.gson.JsonObject;
 import com.simplyillustrate.simplyillustrate.entity.Answer;
 import com.simplyillustrate.simplyillustrate.entity.PracticeQuestion;
 import com.simplyillustrate.simplyillustrate.entity.Question;
+import com.simplyillustrate.simplyillustrate.entity.Tag;
 import com.simplyillustrate.simplyillustrate.entity.User;
 
 import io.reactivex.Observable;
@@ -152,6 +153,37 @@ public class RestAPI {
         GetAnswersByQuestionIdApi getAnswersByQuestionIdApi = retrofit.create(GetAnswersByQuestionIdApi.class);
 
         Call<ArrayList<Answer>> call = getAnswersByQuestionIdApi.getAnswersByQuestionId(question_id);
+        call.enqueue(callback);
+    }
+
+    /* Api to get all tags */
+
+    private interface GetAllTagsApi {
+
+        @Headers("Content-Type: application/json")
+        @GET("/tags")
+        Call<ArrayList<Tag>> getAllTags();
+    }
+
+    public static void getAllTags(Callback<ArrayList<Tag>> callback) {
+
+        GetAllTagsApi getAllTagsApi = retrofit.create(GetAllTagsApi.class);
+        Call<ArrayList<Tag>> call = getAllTagsApi.getAllTags();
+        call.enqueue(callback);
+    }
+
+    /* Api to get questions by tag */
+
+    private interface GetQuestionsByTagIdApi {
+
+        @Headers("Content-Type: application/json")
+        @GET("/filter/posts")
+        Call<ArrayList<Question>> getQuestionsByTagId(@Query("tag_id") String tag_id);
+    }
+
+    public static void getQuestionsByTagId(String tag_id, Callback<ArrayList<Question>> callback) {
+        GetQuestionsByTagIdApi getQuestionsByTagIdApi = retrofit.create(GetQuestionsByTagIdApi.class);
+        Call<ArrayList<Question>> call = getQuestionsByTagIdApi.getQuestionsByTagId(tag_id);
         call.enqueue(callback);
     }
 }
