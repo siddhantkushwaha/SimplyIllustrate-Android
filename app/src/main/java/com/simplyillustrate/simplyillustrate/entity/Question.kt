@@ -3,6 +3,7 @@ package com.simplyillustrate.simplyillustrate.entity
 import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import com.simplyillustrate.simplyillustrate.SimplyIllustrate
 
 class Question() : Parcelable {
 
@@ -63,6 +64,12 @@ class Question() : Parcelable {
 
         override fun newArray(size: Int): Array<Question?> {
             return arrayOfNulls(size)
+        }
+    }
+
+    fun getTagNames(): List<String> {
+        return tags.map { tag ->
+            SimplyIllustrate.tagsMap[tag] ?: " "
         }
     }
 }

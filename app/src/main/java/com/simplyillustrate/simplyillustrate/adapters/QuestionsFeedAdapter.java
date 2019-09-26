@@ -10,6 +10,7 @@ import com.simplyillustrate.simplyillustrate.R;
 import com.simplyillustrate.simplyillustrate.entity.Question;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class QuestionsFeedAdapter extends RecyclerView.Adapter<QuestionsFeedAdapter.QuestionsFeedViewHolder> {
 
@@ -33,7 +34,13 @@ public class QuestionsFeedAdapter extends RecyclerView.Adapter<QuestionsFeedAdap
     public void onBindViewHolder(@NonNull QuestionsFeedViewHolder holder, int position) {
         holder.title.setText(questionsList.get(position).getTitle());
         holder.difficulty.setText(questionsList.get(position).getDifficulty());
-        holder.category.setText("Computer Science");
+        List<String> tagNames = questionsList.get(position).getTagNames();
+        if(tagNames.size() > 2) {
+            String displayName = tagNames.get(0)+","+tagNames.get(1)+" and "+ (tagNames.size() - 2) +" more ...";
+            holder.category.setText(displayName);
+        } else {
+            holder.category.setText(tagNames.get(0));
+        }
     }
 
     @Override
