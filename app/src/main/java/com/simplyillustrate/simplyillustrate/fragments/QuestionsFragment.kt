@@ -87,7 +87,7 @@ class QuestionsFragment : Fragment() {
             ) {
                 /* update global variables */
                 SimplyIllustrate.tags.clear()
-                SimplyIllustrate.tagsMap.clear()
+
 
                 val tag = Tag()
                 tag.id = "all"
@@ -96,7 +96,6 @@ class QuestionsFragment : Fragment() {
 
                 response.body()?.forEach {
                     SimplyIllustrate.tags.add(it)
-                    SimplyIllustrate.tagsMap[it.id] = it.name
                 }
 
                 tagNames.clear()

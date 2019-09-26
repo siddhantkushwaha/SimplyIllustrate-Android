@@ -4,20 +4,22 @@ import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import com.simplyillustrate.simplyillustrate.SimplyIllustrate
+import java.util.*
+import kotlin.collections.ArrayList
 
 class Question() : Parcelable {
-
-    @SerializedName("tags")
-    var tags: ArrayList<String> = ArrayList()
 
     @SerializedName("_id")
     var id: String? = null
 
     @SerializedName("created_by")
-    var createdBy: String? = null
+    var createdBy: User? = null
 
     @SerializedName("title")
     var title: String? = null
+
+    @SerializedName("tags")
+    var tags: ArrayList<Tag> = ArrayList()
 
     @SerializedName("difficulty")
     var difficulty: String? = null
@@ -26,30 +28,34 @@ class Question() : Parcelable {
     var description: String? = null
 
     @SerializedName("timestamp")
-    var timestamp: String? = null
+    var timestamp: Date? = null
 
     @SerializedName("__v")
     var v: Int? = null
 
+    fun getTagNames(): List<String> {
+        return tags.map { tag ->
+            tag.name ?: "no_name"
+        }
+    }
+
     constructor(parcel: Parcel) : this() {
-        tags = parcel.createStringArrayList() ?: ArrayList()
         id = parcel.readString()
-        createdBy = parcel.readString()
+        createdBy = parcel.readParcelable(User::class.java.classLoader)
         title = parcel.readString()
         difficulty = parcel.readString()
         description = parcel.readString()
-        timestamp = parcel.readString()
+        timestamp = parcel.readSerializable() as? Date
         v = parcel.readValue(Int::class.java.classLoader) as? Int
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeStringList(tags)
         parcel.writeString(id)
-        parcel.writeString(createdBy)
+        parcel.writeParcelable(createdBy, flags)
         parcel.writeString(title)
         parcel.writeString(difficulty)
         parcel.writeString(description)
-        parcel.writeString(timestamp)
+        parcel.writeSerializable(timestamp)
         parcel.writeValue(v)
     }
 
@@ -64,12 +70,6 @@ class Question() : Parcelable {
 
         override fun newArray(size: Int): Array<Question?> {
             return arrayOfNulls(size)
-        }
-    }
-
-    fun getTagNames(): List<String> {
-        return tags.map { tag ->
-            SimplyIllustrate.tagsMap[tag] ?: " "
         }
     }
 }

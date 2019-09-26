@@ -3,11 +3,12 @@ package com.simplyillustrate.simplyillustrate.entity
 import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import java.util.*
 
 class PracticeQuestion() : Parcelable {
 
     @SerializedName("tags")
-    var tags: List<String>? = null
+    var tags: List<Tag>? = null
 
     @SerializedName("incorrect_answers")
     var incorrectAnswers: List<String>? = null
@@ -16,7 +17,7 @@ class PracticeQuestion() : Parcelable {
     var id: String? = null
 
     @SerializedName("created_by")
-    var createdBy: String? = null
+    var createdBy: User? = null
 
     @SerializedName("type")
     var type: String? = null
@@ -31,34 +32,34 @@ class PracticeQuestion() : Parcelable {
     var correctAnswer: String? = null
 
     @SerializedName("timestamp")
-    var timestamp: String? = null
+    var timestamp: Date? = null
 
     @SerializedName("__v")
     var v: Int? = null
 
     constructor(parcel: Parcel) : this() {
-        tags = parcel.createStringArrayList()
+        tags = parcel.createTypedArrayList(Tag)
         incorrectAnswers = parcel.createStringArrayList()
         id = parcel.readString()
-        createdBy = parcel.readString()
+        createdBy = parcel.readParcelable(User::class.java.classLoader)
         type = parcel.readString()
         difficulty = parcel.readString()
         question = parcel.readString()
         correctAnswer = parcel.readString()
-        timestamp = parcel.readString()
+        timestamp = parcel.readSerializable() as? Date
         v = parcel.readValue(Int::class.java.classLoader) as? Int
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeStringList(tags)
+        parcel.writeTypedList(tags)
         parcel.writeStringList(incorrectAnswers)
         parcel.writeString(id)
-        parcel.writeString(createdBy)
+        parcel.writeParcelable(createdBy, flags)
         parcel.writeString(type)
         parcel.writeString(difficulty)
         parcel.writeString(question)
         parcel.writeString(correctAnswer)
-        parcel.writeString(timestamp)
+        parcel.writeSerializable(timestamp)
         parcel.writeValue(v)
     }
 

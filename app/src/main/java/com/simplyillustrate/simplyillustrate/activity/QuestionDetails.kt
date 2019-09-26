@@ -32,16 +32,14 @@ class QuestionDetails : AppCompatActivity() {
         }
 
         question_title.text = question?.title
-        question_created_by.text = question?.createdBy
+        question_created_by.text = question?.createdBy?.email
         question_description.text = question?.description
         question_difficulty.text = question?.difficulty
 
         val adapter = AnswerAdapter(answers)
         listview_answers.layoutManager = LinearLayoutManager(this@QuestionDetails)
         listview_answers.adapter = adapter
-
-
-
+        
         RestAPI.getAnswersByQuestionId(question?.id!!, object : Callback<ArrayList<Answer>> {
             override fun onFailure(call: Call<ArrayList<Answer>>, t: Throwable) {
                 t.printStackTrace()

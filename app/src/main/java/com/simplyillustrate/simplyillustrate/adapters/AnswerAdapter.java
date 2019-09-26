@@ -32,7 +32,7 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.AnswerView
     @Override
     public void onBindViewHolder(@NonNull AnswerViewHolder holder, int position) {
         holder.text.setText(answerList.get(position).getText());
-        holder.created_by.setText(answerList.get(position).getCreatedBy());
+        holder.created_by.setText(answerList.get(position).getCreatedBy().getEmail());
     }
 
     @Override

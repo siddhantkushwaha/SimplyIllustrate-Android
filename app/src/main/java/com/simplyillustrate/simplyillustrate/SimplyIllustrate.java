@@ -22,5 +22,4 @@ public class SimplyIllustrate extends Application {
     public static String userId;
 
     public static ArrayList<Tag> tags = new ArrayList<>();
-    public static HashMap<String, String> tagsMap = new HashMap<>();
 }
