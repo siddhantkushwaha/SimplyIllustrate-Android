@@ -7,6 +7,8 @@ import com.google.gson.JsonObject
 import com.simplyillustrate.simplyillustrate.R
 import com.simplyillustrate.simplyillustrate.api.RestAPI
 import com.simplyillustrate.simplyillustrate.entity.Question
+import com.simplyillustrate.simplyillustrate.entity.Tag
+import com.simplyillustrate.simplyillustrate.entity.User
 import kotlinx.android.synthetic.main.activity_post_question.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -27,33 +29,34 @@ class PostQuestionActivity : AppCompatActivity() {
 
     private fun sendQuestion() {
 
-//        TODO Siddhant Kushwaha - Fix This
-
         val question = Question()
 
         question.title = tv_title.text.toString().trim()
         question.difficulty = tv_difficulty.text.toString().trim()
-//        question.tags = arrayListOf("5c7c15892fda391295a2e78e")
-        //arrayListOf(tv_title.text.toString().trim())
         question.description = tv_description.text.toString().trim()
 
+        question.createdBy = User()
+        question.createdBy?.id = "5c7c0f7d953d2810dae02a4f"
 
-//        question.createdBy = "5c7c0f7d953d2810dae02a4f"
+        val tag = Tag()
+        tag.id = "5c7c15892fda391295a2e78e"
+        question.tags.add(tag)
 
-//        RestAPI.addQuestion(question, object : Callback<JsonObject> {
-//
-//            override fun onFailure(call: Call<JsonObject>, t: Throwable) {
-//
-//                t.printStackTrace()
-//            }
-//
-//            override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
-//
-//                if (response.isSuccessful) {
-//                    Toast.makeText(this@PostQuestionActivity, "Question Added", Toast.LENGTH_LONG).show()
-//                }
-//            }
-//        })
+        RestAPI.addQuestion(question, object : Callback<JsonObject> {
+
+            override fun onFailure(call: Call<JsonObject>, t: Throwable) {
+
+                t.printStackTrace()
+            }
+
+            override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
+
+                if (response.isSuccessful) {
+                    Toast.makeText(this@PostQuestionActivity, "Question Added", Toast.LENGTH_LONG)
+                        .show()
+                }
+            }
+        })
     }
 
 }
