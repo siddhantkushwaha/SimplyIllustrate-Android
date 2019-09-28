@@ -32,6 +32,7 @@ class QuestionsFragment : Fragment() {
 
     private lateinit var rootView: View
 
+    private val questions = ArrayList<Question>()
     private val questionsFeed = ArrayList<Question>()
     private val tagNames = ArrayList<String>()
 
@@ -68,7 +69,7 @@ class QuestionsFragment : Fragment() {
                 position: Int,
                 id: Long
             ) {
-                println(SimplyIllustrate.tags[position]?.name)
+                filter(SimplyIllustrate.tags[position])
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -144,16 +145,31 @@ class QuestionsFragment : Fragment() {
             ) {
 
                 Log.i(TAG, response.body().toString())
-
-                questionsFeed.clear()
+                questions.clear()
                 response.body()?.forEach {
                     it.title = it.title?.trim { ch -> ch == '\"' }
-                    questionsFeed.add(it)
+                    questions.add(it)
                 }
-
-                rootView.rv_questions.adapter?.notifyDataSetChanged()
+                filter(SimplyIllustrate.tags[0])
             }
         })
+    }
+
+    private fun filter(tag: Tag) {
+        println(tag.name)
+        questionsFeed.clear()
+        when (tag.id) {
+            "all" -> questionsFeed.addAll(questions)
+            else -> {
+                val filtered = questions.filter { question ->
+                    question.tags.find { _tag ->
+                        _tag.id == tag.id
+                    } != null
+                }
+                questionsFeed.addAll(filtered)
+            }
+        }
+        rootView.rv_questions.adapter?.notifyDataSetChanged()
     }
 }
 
