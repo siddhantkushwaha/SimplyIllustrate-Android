@@ -36,7 +36,11 @@ class PostsFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
 
         Log.i(TAG, "Fragment Opened")
 
@@ -75,10 +79,13 @@ class PostsFragment : Fragment() {
         RestAPI.getQuestionsByUserId(HomeActivity.userId!!, object : Callback<ArrayList<Question>> {
             override fun onFailure(call: Call<ArrayList<Question>>, t: Throwable) {
 
-                Log.i(TAG, t.message)
+                t.printStackTrace()
             }
 
-            override fun onResponse(call: Call<ArrayList<Question>>, response: Response<ArrayList<Question>>) {
+            override fun onResponse(
+                call: Call<ArrayList<Question>>,
+                response: Response<ArrayList<Question>>
+            ) {
 
                 Log.i(TAG, response.body().toString())
 
@@ -87,13 +94,11 @@ class PostsFragment : Fragment() {
                     it.title = it.title?.trim { ch -> ch == '\"' }
                     questionsFeed.add(it)
                 }
-
                 rootView.rv_questions.adapter?.notifyDataSetChanged()
             }
         })
 
         addPost.setOnClickListener {
-            //Snackbar.make(it,"Click to create new post",Snackbar.LENGTH_SHORT).show()
             startActivity(Intent(activity, PostQuestionActivity::class.java))
         }
     }
