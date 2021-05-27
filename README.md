@@ -1,1 +1,3 @@
-# simply-illustrate-android
+### Simply Illustrate
+
+Trying my hand at ed-tech.
